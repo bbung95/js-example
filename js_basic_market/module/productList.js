@@ -1,7 +1,7 @@
 import { makeDOMwithProperties } from "../utils/dom.js";
 import { getProductCard } from "./productCard.js";
 
-export const getProductList = (productInfoList) => {
+export const getProductList = (productInfoList, reloadPageCallBack) => {
     if (productInfoList == null || !Array.isArray(productInfoList)) return;
 
     const productList = makeDOMwithProperties("div", {
@@ -10,7 +10,7 @@ export const getProductList = (productInfoList) => {
 
     const el = document.createDocumentFragment();
     productInfoList.forEach((item) => {
-        const productCard = getProductCard(item);
+        const productCard = getProductCard(item, reloadPageCallBack);
         el.appendChild(productCard);
     });
 
