@@ -2,7 +2,7 @@ const selectAnchorMenuDOM = document.querySelector("#anchor-to-select");
 const resultAnchorMenuDOM = document.querySelector("#anchor-to-result");
 const mbtiAnchorMenuDOM = document.querySelector("#anchor-to-mbti");
 
-const selectSectionDOM = document.querySelector("#title-section");
+const selectSectionDOM = document.querySelector("#participate-section");
 const resultSectionDOM = document.querySelector("#result-section");
 const mbtiSectionDOM = document.querySelector("#mbti-section");
 
