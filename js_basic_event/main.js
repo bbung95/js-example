@@ -1,3 +1,4 @@
+import { setTabMenuEvent } from "./module/tabMenu.js";
 import { countUp } from "./utils/countUp.js";
 
 const data = {
@@ -5,6 +6,7 @@ const data = {
 };
 
 const participateDOM = document.querySelector("#participate-number");
-participateDOM.textContent = data.participate;
 
-countUp(participateDOM, data.participate, 5000);
+countUp(participateDOM, data.participate, 3000);
+
+setTabMenuEvent();
