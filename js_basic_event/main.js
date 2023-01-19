@@ -1,4 +1,6 @@
+import { setMbtiSection } from "./module/mbtiSelect.js";
 import { setResultContainer, setSelectBtn, setSelectCards } from "./module/selectCard.js";
+import { setShareURLBtn } from "./module/share.js";
 import { setTabMenuEvent } from "./module/tabMenu.js";
 import { countUp } from "./utils/countUp.js";
 
@@ -19,3 +21,9 @@ setSelectBtn();
 
 // 결과 페이지
 setResultContainer();
+
+// 유형 검사
+setMbtiSection();
+
+// 공유버튼
+setShareURLBtn();
