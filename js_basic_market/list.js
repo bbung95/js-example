@@ -1,23 +1,15 @@
-import { getProductCard } from "./module/productCard.js";
+import { fetchSectionListData } from "./module/fetch.js";
+import { setButtonEvent, setFilterEvent } from "./module/productFilter.js";
+import { getProductList } from "./module/productList.js";
 
-const listSection = document.querySelector(".product-list-con");
+const sectionDOM = document.querySelector("section");
 
-let listData;
+const sectionInfoList = await fetchSectionListData();
+const productList = sectionInfoList.reduce((prev, curr) => [...prev, ...curr.productList], []);
 
-const initListData = (data) => {
-    listData = data.sectionInfoList;
-    console.log(listData);
+const productListDOM = getProductList(productList);
 
-    listData[0].productList.forEach((item) => {
-        const productCard = getProductCard(item);
-        listSection.appendChild(productCard);
-    });
-};
+sectionDOM.appendChild(productListDOM);
 
-fetch("./public/mock/sectionListData.json")
-    .then((res) => {
-        return res.json();
-    })
-    .then((data) => {
-        initListData(data);
-    });
+setButtonEvent(productList);
+setFilterEvent();

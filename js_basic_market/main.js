@@ -1,3 +1,4 @@
+import { fetchSectionListData } from "./module/fetch.js";
 import { getListSection } from "./module/productSection.js";
 
 /* 콜백함수 사용
@@ -21,14 +22,8 @@ fetch("./public/mock/sectionListData.json")
 */
 
 // async await 사용
-try {
-    const result = await fetch("./public/mock/sectionListData.json");
-    const data = await result.json();
-    const sectionInfoList = data.sectionInfoList;
+const sectionInfoList = await fetchSectionListData();
 
-    sectionInfoList.forEach((item) => {
-        document.body.appendChild(getListSection(item.sectionTitle, item.productList));
-    });
-} catch (error) {
-    console.log(error);
-}
+sectionInfoList.forEach((item) => {
+    document.body.appendChild(getListSection(item.sectionTitle, item.productList));
+});
