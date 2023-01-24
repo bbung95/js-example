@@ -1,4 +1,16 @@
-import { setBoxDOM } from "./module/mouseControlModule.js";
+import { initMouseControlGame, setBoxDOM } from "./module/mouseControlModule.js";
+import { handleModalClose } from "./utils/modal.js";
+
+const onMouseControlGameEnd = () => {
+    initMouseControlGame();
+};
+
+const initialize = () => {
+    const retryBtn = document.querySelector(".retry-button");
+    retryBtn.onclick = () => {
+        handleModalClose(onMouseControlGameEnd);
+    };
+};
 
 setBoxDOM({
     row: 5,
@@ -16,3 +28,5 @@ setBoxDOM({
         [3, 4],
     ],
 });
+
+initialize();
