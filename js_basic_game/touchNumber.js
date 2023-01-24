@@ -1,5 +1,5 @@
 import { handleModalClose, handleModalOpen } from "./utils/modal.js";
-import { getNowTime, getResultTimeString, setTimer, startTtimer, stopTimer } from "./utils/time.js";
+import { getNowTime, getResultTimeString, setTimer, startTimer, stopTimer } from "./utils/time.js";
 import { TOUCH_NUMBER_SCORE_KEY } from "./constants/localStorage.js";
 
 const numberBtnList = document.querySelectorAll(".number-button");
@@ -62,7 +62,7 @@ const setButtonDOM = () => {
 
             // 시작
             if (startNum == numId) {
-                startTtimer(handleFailGame);
+                startTimer(handleFailGame);
             }
             // 끝
             if (endNum == targetNum) {

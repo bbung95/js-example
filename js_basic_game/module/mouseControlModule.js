@@ -1,6 +1,6 @@
 import { makeDOMwithProperties } from "../utils/dom.js";
 import { handleModalOpen } from "../utils/modal.js";
-import { stopTimer, isGameStart, startTtimer, setTimer, getResultTimeString, getNowTime } from "../utils/time.js";
+import { stopTimer, isGameStart, startTimer, setTimer, getResultTimeString, getNowTime } from "../utils/time.js";
 import { MOUSE_CONTROL_SCORE_KEY } from "../constants/localStorage.js";
 
 let boxDOMList = [];
@@ -78,7 +78,7 @@ export const setBoxDOM = ({
                         className: "control-box start",
                         innerHTML: "시작",
                         onmouseover: (event) => {
-                            startTtimer(handlerFaildGame);
+                            startTimer(handlerFaildGame);
                             event.target.innerHTML = "";
                         },
                     };

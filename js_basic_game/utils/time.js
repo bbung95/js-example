@@ -15,7 +15,7 @@ const convertToTwoNumber = (num) => {
     }
 };
 
-const getTimeString = (time) => {
+export const getTimeString = (time) => {
     const hours = Math.floor(time / 3600);
     time = time - hours * 3600;
 
@@ -32,7 +32,7 @@ export const setTimer = (time) => {
     timerDOM.innerHTML = getTimeString(time);
 };
 
-export const startTtimer = (onTimeOver) => {
+export const startTimer = (onTimeOver) => {
     isGameStart = true;
     time = 0;
     timerID = setInterval(() => {
