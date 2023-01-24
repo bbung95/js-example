@@ -29,6 +29,7 @@ const getTimeString = (time) => {
 
 export const setTimer = (time) => {
     time = time;
+    timerDOM.innerHTML = getTimeString(time);
 };
 
 export const startTtimer = (onTimeOver) => {
