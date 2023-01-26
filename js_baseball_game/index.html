@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
+        <title>Baseball</title>
+        <link rel="stylesheet" href="./utils/reset.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+
+    <body>
+        <main class="container">
+            <h1 class="title">Baseball</h1>
+            <section class="question_area">
+                <div class="ball_answer">정답은?</div>
+                <form class="question_area">
+                    <label for="question"></label>
+                    <input type="number" id="question" min="0" max="9999" />
+                    <button type="button" class="fight_btn">도전</button>
+                </form>
+            </section>
+            <section class="result_area">
+                <div class="title">결과</div>
+                <div class="result_list"></div>
+            </section>
+        </main>
+        <script src="./assets/js/script.js"></script>
+    </body>
+</html>

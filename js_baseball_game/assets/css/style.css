@@ -1,0 +1,82 @@
+:root {
+  --color-white-black: #36373a;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-image: url("../bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.container {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  top: 200px;
+  text-align: center;
+}
+.container > .title {
+  visibility: hidden;
+}
+
+.question_area {
+  width: 200px;
+  margin: 0 auto;
+}
+.question_area .ball_answer {
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  background-color: #fff;
+}
+.question_area .question_area {
+  margin-bottom: 30px;
+}
+.question_area .question_area #question {
+  float: left;
+  width: 60%;
+  height: 30px;
+  border: none;
+}
+.question_area .question_area .fight_btn {
+  float: right;
+  width: 30%;
+  height: 30px;
+  color: #fff;
+  background-color: var(--color-white-black);
+  border: none;
+}
+.question_area .question_area .fight_btn:hover {
+  background-color: gray;
+}
+.question_area .question_area::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.result_area {
+  display: inline-block;
+  background-color: var(--color-white-black);
+  margin: 0 auto;
+  color: #fff;
+}
+.result_area .title {
+  padding: 20px;
+  font-size: 16px;
+  text-align: center;
+}
+.result_area .result_list {
+  padding: 0 16px;
+  font-size: 16px;
+  text-align: center;
+}
+.result_area .result_list div {
+  margin-bottom: 10px;
+}
