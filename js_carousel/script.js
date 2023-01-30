@@ -14,6 +14,7 @@
             this.totalItems = this.items.length;
             this.current = 0;
             this.isMoving = false;
+            this.stopCarousel = null;
         }
 
         initCarousel() {
@@ -26,19 +27,30 @@
             this.prevButton = this.carouselElement.querySelector(".carousel_button--prev");
             this.nextButton = this.carouselElement.querySelector(".carousel_button--next");
 
-            this.prevButton.addEventListener("click", () => {
-                this.movePrev();
-            });
-            this.nextButton.addEventListener("click", () => {
-                this.moveNext();
+            this.prevButton.onclick = () => this.movePrev();
+            this.nextButton.onclick = () => this.moveNext();
+
+            // 케러셀 자동 이벤트 중지
+            this.items.forEach((item) => {
+                item.onmousedown = () => clearInterval(this.stopCarousel);
+                item.onmouseup = () => this.autoNextCarousel();
+                item.ondragend = () => this.autoNextCarousel();
             });
         }
 
+        // 케러셀 자동
+        autoNextCarousel() {
+            this.stopCarousel = setInterval(() => {
+                this.moveNext();
+            }, 4000);
+        }
+
+        // 케러셀 지연
         disabledInteraction() {
             this.isMoving = true;
             setTimeout(() => {
                 this.isMoving = false;
-            }, 500);
+            }, 800);
         }
 
         movePrev() {
@@ -93,6 +105,7 @@
 
         carousel.initCarousel();
         carousel.setEventListener();
+        carousel.autoNextCarousel();
     };
 
     init();
