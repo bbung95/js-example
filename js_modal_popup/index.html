@@ -11,8 +11,9 @@
     <body>
         <div class="box"></div>
         <div class="box"></div>
-        <button class="modal_open_button">모달 띄우기</button>
+        <button class="modal_open_button">toggle 모달 띄우기</button>
         <div class="box"></div>
+        <button class="dialog_open_button">dialog 모달 띄우기</button>
         <div class="box"></div>
         <div class="box"></div>
         <div class="box"></div>
@@ -32,6 +33,18 @@
                 </div>
             </div>
         </div>
+
+        <dialog>
+            <div class="modal_wrap">
+                <div class="modal_header">모달 타이틀</div>
+                <hr />
+                <div class="modal_body">모달 바디입니다.</div>
+                <form class="modal_footer" method="dialog">
+                    <button class="dialog_button cancel" value="close">취소</button>
+                    <button class="dialog_button confirm" value="confirm">확인</button>
+                </form>
+            </div>
+        </dialog>
         <script src="script.js"></script>
     </body>
 </html>

@@ -83,3 +83,35 @@ button {
 .scroll_rock {
     overflow: hidden;
 }
+
+/* dialog */
+.dialog_open_button {
+    width: 180px;
+    height: 60px;
+    margin: 0 auto;
+    display: block;
+    background-color: #4a5e72;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+dialog::backdrop {
+    background-color: rgb(0 0 0 / 50%);
+}
+
+.dialog_button {
+    width: 50%;
+    height: 48px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.dialog_button.cancel {
+    margin-right: 4px;
+}
+.dialog_button.confirm {
+    margin-left: 4px;
+    background-color: #4ae7c2;
+}
