@@ -10,10 +10,13 @@
             this.timer = element;
             this.startTime = 0;
             this.stopTime = 0;
-            this.timerID;
+            this.timerID = "";
             this.time = "00:00:00";
-            this.check = false;
         }
+
+        print = (text) => {
+            this.timer.innerHTML = text;
+        };
 
         addZero = (time) => {
             if (time > 99) {
@@ -27,46 +30,46 @@
             return time;
         };
 
-        start = () => {
-            if (this.check) return;
-
-            let date = new Date();
+        setStartTime = () => {
             if (this.startTime === 0) {
-                this.startTime = date;
+                this.startTime = new Date();
             } else if (this.stopTime !== 0) {
                 this.startTime = new Date(this.startTime.getTime() + new Date().getTime() - this.stopTime);
+                this.stopTime = 0;
             }
+        };
 
-            this.timerID = setInterval(() => {
-                const time = new Date(new Date().getTime() - this.startTime);
-                const minute = this.addZero(time.getMinutes());
-                const seconds = this.addZero(time.getSeconds());
-                const milliseconds = this.addZero(time.getMilliseconds());
+        startTimer = () => {
+            const time = new Date(new Date().getTime() - this.startTime);
+            const minute = this.addZero(time.getMinutes());
+            const seconds = this.addZero(time.getSeconds());
+            const milliseconds = this.addZero(time.getMilliseconds());
 
-                this.time = `${minute}:${seconds}:${milliseconds}`;
-                this.timer.innerHTML = this.time;
-            }, 20);
+            this.time = `${minute}:${seconds}:${milliseconds}`;
+            this.print(this.time);
+        };
 
-            this.stopTime = 0;
-            this.check = true;
+        start = () => {
+            if (this.timerID !== "") return;
+            this.setStartTime();
+            this.timerID = setInterval(this.startTimer, 20);
         };
 
         // interval 종료, 멈춘 시간 기록
         stop = () => {
-            this.stopTime = new Date();
             clearInterval(this.timerID);
-            this.check = false;
+            this.stopTime = new Date();
+            this.timerID = "";
         };
 
         // 생성자 값 초기화
         reset = () => {
+            clearInterval(this.timerID);
             this.startTime = 0;
             this.stopTime = 0;
-            clearInterval(this.timerID);
-            this.timerID = 0;
+            this.timerID = "";
             this.time = "00:00:00";
-            this.timer.innerHTML = this.time;
-            this.check = false;
+            this.print(this.time);
         };
     }
 
