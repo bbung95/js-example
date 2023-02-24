@@ -13,7 +13,7 @@
         constructor(display) {
             this.display = display;
             this.value = 0;
-            this.totalValue = 0;
+            this.result = false;
             this.operation = null;
             this.cal = [];
         }
@@ -24,17 +24,26 @@
                 this.operation = null;
             }
 
-            if (this.value == 0) {
+            if (this.result) {
+                this.value = 0;
+                this.result = false;
+            }
+
+            // 첫번째 입력인지 아닌지 판단
+            if (this.value == 0 && number !== ".") {
                 this.value = number;
                 return;
             }
 
+            // 소수점을 반복해서 입력하지 못하도록
+            if (this.value[this.value.length - 1] === "." && number === ".") return;
+
             this.value = this.value + number;
-            console.log(this.cal);
         };
 
         setOperation = (operation) => {
             if (this.value !== 0) {
+                if (this.value[this.value.length - 1] === ".") this.value.slice(0, this.value.length - 1);
                 this.cal.push(this.value);
                 this.display.value = 0;
                 this.value = 0;
@@ -44,13 +53,15 @@
         };
 
         compute = () => {
+            // 마지막 입력이 연산자인지 확인
             if (isNaN(Number(this.cal[this.cal.length - 1]))) {
                 this.cal.push(this.value);
             }
 
             this.display.value = eval(this.cal.join(""));
-            this.value = 0;
-            this.cal = [this.display.value];
+            this.value = this.display.value;
+            this.result = true;
+            this.cal = [];
         };
 
         updateDisplay = () => {
@@ -65,7 +76,6 @@
         allClear = () => {
             this.display.value = 0;
             this.value = 0;
-            this.totalValue = 0;
             this.operation = null;
             this.cal = [];
         };
@@ -100,4 +110,30 @@
     $clearBtn.onclick = () => calculator.clear();
     $allClearBtn.onclick = () => calculator.allClear();
     $computeBtn.onclick = () => calculator.compute();
+
+    // 키프레스 이벤트 추가
+    window.addEventListener("keydown", (e) => {
+        const key = e.key;
+
+        const operations = ["+", "-", "*", "/"];
+
+        if (key === "." || !isNaN(Number(key))) {
+            calculator.appendNumber(key);
+            calculator.updateDisplay();
+            return;
+        }
+
+        if (key === "Backspace") {
+            calculator.clear();
+            return;
+        }
+
+        if (operations.includes(key)) {
+            calculator.setOperation(key);
+            calculator.updateDisplay();
+            return;
+        }
+
+        if (key === "=") calculator.compute();
+    });
 })();
